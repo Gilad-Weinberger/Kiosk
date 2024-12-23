@@ -58,6 +58,19 @@ body form button {
 body form button:hover {
   background-color: #0056b3;
 }
+body .admin-link {
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+}
+body .admin-link:hover {
+  background-color: #0056b3;
+}
 body .success {
   margin: 0px;
   color: green;

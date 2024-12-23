@@ -28,6 +28,7 @@
       </select>
       <button type="submit">שליחה</button>
     </form>
+    <a class="admin-link" href="{% url 'admin:index' %}">מעקב הזמנות</a>
     {% if success %}
     <h1 class="success">{{success}}</h1>
     {% endif %}
