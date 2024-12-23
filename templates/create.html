@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiosk | Create Order</title>
+    <link rel="stylesheet" href="{% static 'css/create.css' %}" />
+  </head>
+  <body>
+    {% if error %}
+    <h1 class="error">{{ error }}</h1>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <label for="name">שם:</label>
+      <input type="text" id="name" name="name" />
+      <label for="food">אוכל:</label>
+      <select id="food" name="food">
+        <option value="BURGER">המבורגר</option>
+        <option value="HOTDOG">נקנקיה</option>
+        <option value="TOAST">סודוך</option>
+      </select>
+      <label for="pay">תשלום:</label>
+      <select id="pay" name="pay">
+        <option value="CASH">מזומן</option>
+        <option value="NOTE">שוברים</option>
+      </select>
+      <button type="submit">שליחה</button>
+    </form>
+    {% if success %}
+    <h1 class="success">{{success}}</h1>
+    {% endif %}
+  </body>
+</html>

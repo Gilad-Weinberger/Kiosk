@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"></html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Kiosk | Home</title>
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    </head>
+    <body>
+        <h1>קיוסק שמינית<br> הכי שווה בארץ!</h1>
+        <div class="links">
+            <a href="{% url 'admin:index' %}">מעקב הזמנות</a>
+            <a href="{% url 'create' %}">ליצור הזמנה</a>
+        </div>
+    </body>
+</html>
