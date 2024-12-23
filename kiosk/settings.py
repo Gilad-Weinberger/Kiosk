@@ -92,8 +92,6 @@ DATABASES['default'] = {
     'PORT': '39418'
 }
 
-#postgresql://postgres:iruLWsgvBWonxvAsxHDlQCIASGnYjWpB@junction.proxy.rlwy.net:39418/railway
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
