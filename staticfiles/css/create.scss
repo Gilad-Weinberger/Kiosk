@@ -57,7 +57,8 @@ body {
       }
     }
   }
-  .success {
+  .success,
+  .fail {
     margin: 0px;
     color: green;
     font-size: 14px;
@@ -68,6 +69,9 @@ body {
     padding: 30px 0px;
     text-align: center;
     font-size: 25px;
+  }
+  .fail {
+    color: red;
   }
 }
 

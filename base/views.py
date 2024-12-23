@@ -10,6 +10,7 @@ def add_done_materials(add1: str, list1: list):
         list1.append(add1)
     return list1
 
+@csrf_exempt
 def create(request):
     materials_done = []
     context = {}
@@ -33,12 +34,24 @@ def create(request):
 
         if pay == 'NOTE':
             if food == 'BURGER':
+                if not active_rabbi_order_burgers:
+                    if materials_done:
+                        materials_done_str = " ו".join(materials_done)
+                        context["error"] = f"אין יותר הזמנות של {materials_done_str} עם שוברים"
+                    context["fail"] = "אין שוברים להמבורגרים!"
+                    return render(request, 'create.html', context)
                 active_rabbi_order_burgers.left -= 1
                 if active_rabbi_order_burgers.left == 0:
                     active_rabbi_order_burgers.is_done = True
                     add_done_materials("המבורגרים", materials_done)
                 active_rabbi_order_burgers.save()
             elif food == 'HOTDOG':
+                if not active_rabbi_order_burgers:
+                    if materials_done:
+                        materials_done_str = " ו".join(materials_done)
+                        context["error"] = f"אין יותר הזמנות של {materials_done_str} עם שוברים"
+                    context["fail"] = "אין שוברים לנקנקיות!"
+                    return render(request, 'create.html', context)
                 active_rabbi_order_hotdogs.left -= 1
                 if active_rabbi_order_hotdogs.left == 0:
                     active_rabbi_order_hotdogs.is_done = True
@@ -56,7 +69,7 @@ def create(request):
             context["success"] = f"הזמנת {new_food} של {new_order.name} נוצרה בהצלחה"
 
     if materials_done:
-        materials_done_str = "ו ".join(materials_done)
+        materials_done_str = " ו".join(materials_done)
         context["error"] = f"אין יותר הזמנות של {materials_done_str} עם שוברים"
         
     return render(request, 'create.html', context)
