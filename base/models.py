@@ -18,11 +18,16 @@ class Order(models.Model):
     pay = models.CharField(max_length=100, choices=PAY_CHOICES)
     date = models.DateTimeField(auto_now_add=True)
 
-class RabbiOrder(models.Model):
-    burgers = models.PositiveIntegerField()
-    hotdogs = models.PositiveIntegerField()
+class RabbiOrderBurgers(models.Model):
+    count = models.PositiveIntegerField()
     date = models.DateTimeField(default=timezone.now)
     is_done = models.BooleanField(default=False)
     
-    burgers_left = models.PositiveIntegerField(default=burgers)
-    hotdogs_left = models.PositiveIntegerField(default=hotdogs)
+    left = models.PositiveIntegerField(default=count)
+
+class RabbiOrderHotdogs(models.Model):
+    count = models.PositiveIntegerField()
+    date = models.DateTimeField(default=timezone.now)
+    is_done = models.BooleanField(default=False)
+    
+    left = models.PositiveIntegerField(default=count)
