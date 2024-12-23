@@ -18,6 +18,10 @@ class Order(models.Model):
     pay = models.CharField(max_length=100, choices=PAY_CHOICES)
     date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        formatted_date = self.date.strftime("%d/%m/%Y %H:%M")
+        return f'{self.name} - {self.food} - {self.pay} - {formatted_date}'
+
 class RabbiOrderBurgers(models.Model):
     count = models.PositiveIntegerField()
     date = models.DateTimeField(default=timezone.now)
@@ -25,9 +29,17 @@ class RabbiOrderBurgers(models.Model):
     
     left = models.PositiveIntegerField(default=count)
 
+    def __str__(self):
+        formatted_date = self.date.strftime("%d/%m/%Y %H:%M")
+        return f'{self.count} - {formatted_date} ({self.left})'
+
 class RabbiOrderHotdogs(models.Model):
     count = models.PositiveIntegerField()
     date = models.DateTimeField(default=timezone.now)
     is_done = models.BooleanField(default=False)
     
     left = models.PositiveIntegerField(default=count)
+
+    def __str__(self):
+        formatted_date = self.date.strftime("%d/%m/%Y %H:%M")
+        return f'{self.count} - {formatted_date} ({self.left})'
